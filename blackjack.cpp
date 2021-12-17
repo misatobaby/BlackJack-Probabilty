@@ -286,10 +286,21 @@ return wccd;
 
 float WinningProbability(int playerHand[], int houseHand[],int playerScore, int playerCardCount, int houseCardCount){
 
+  int winningCard = 21 - playerScore;
+  if (winningCard == 10){
+    return static_cast<float> (12- WinningCardCount(playerHand, houseHand,playerScore,playerCardCount)) * 100  / (52 - (houseCardCount + playerCardCount));
+  }
+
 return static_cast<float> (4- WinningCardCount(playerHand, houseHand,playerScore,playerCardCount)) * 100  / (52 - (houseCardCount + playerCardCount));
 }
 
 float WinningProbabilityDealer(int playerHand[], int houseHand[], int playerScore, int playerCardCount, int houseCardCount){
+  int winningCard = 21 - playerScore;
+  if (winningCard == 10){
+
+    return static_cast<float> ((12- WinningCardCount(playerHand,houseHand,playerScore,playerCardCount) - 1)) * 100 / (52 - (houseCardCount + playerCardCount));
+    
+  }
 
 return static_cast<float> ((4- WinningCardCount(playerHand,houseHand,playerScore,playerCardCount) - 1)) * 100 / (52 - (houseCardCount + playerCardCount));
 }
